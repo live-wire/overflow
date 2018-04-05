@@ -24,5 +24,6 @@ cd overflow/
 Extract Posts.xml in this folder.
 ```
 python extract_questions.py
+python extract_answers.py
 ```
-This will extract the questions for the tags `Python`, `Java` and `R`. :beer:
+This will extract the questions and then the answers to the extracted questions for the tags `Python`, `Java` and `R` in _csv_ formats. :beer:
