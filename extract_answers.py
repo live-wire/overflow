@@ -22,7 +22,7 @@ def main():
         open_files.append(qout)
         item_count.append(0)
 
-        que = pd.read_csv(item + '_questions.csv',encoding = 'iso-8859-1')
+        que = pd.read_csv(item + '_questions.csv',encoding = 'iso-8859-1', error_bad_lines=False)
         ids = np.array(que['Id'])
         questions[item] = ids
 
