@@ -37,8 +37,12 @@ def main():
             curr_item = categories[0]
 
             for i,item in enumerate(categories):
-                parent = int(extract('ParentId', line) or '0')
-                if parent in questions[curr_item]:
+                parent = 0
+                try:
+                    parent = int(extract('ParentId', line) or '0')
+                except:
+                    pass
+                if parent != 0 and parent in questions[curr_item]:
                     curr_file = open_files[i]
                     item_index = i
                     break
