@@ -7,7 +7,7 @@ import pandas as pd
 
 filepath = 'Users.xml'
 
-headera = "Id,Reputation,CreationDate,LastAccessDate,Views,UpVotes,DownVotes,Age"
+headera = "Id,Reputation,CreationDate,LastAccessDate,Views,UpVotes,DownVotes,Age,DisplayName"
 
 categories = ['python','java','r']
 
@@ -53,10 +53,11 @@ def main():
                         upvotes = int(extract('UpVotes', line) or 0)
                         downvotes = int(extract('DownVotes', line) or 0)
                         age = int(extract('Age', line) or 0)
+                        displayname = extract('DisplayName',line)
 
                         csvrow = str(id) + ',' + str(reputation) + ',' + str(creationdate) + ',' + str(
                             lastaccessdate) + ',' + str(views) + ',' + str(upvotes) + ',' + str(
-                            downvotes)+ ',' + str(age)
+                            downvotes)+ ',' + str(age)+','+str(displayname)
 
                         curr_file.write(csvrow + "\n")
                         cnt = cnt + 1
@@ -67,7 +68,7 @@ def main():
             cnttotal = cnttotal + 1
 
             if cnttotal % 1000 == 0:
-                print('Total:', cnttotal, " Users:", cnt)
+                print('Done:',str(float(cnttotal)/8523670)+"%",' Total:', cnttotal, " Users:", cnt)
             line = fp.readline()
         print(cnt)
     curr_file.close()
