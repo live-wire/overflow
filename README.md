@@ -17,13 +17,16 @@ cd overflow/
 
 [Link](https://archive.org/download/stackexchange) to all dumps from stackexchange.
 
-[Link](stackoverflow.com-Posts.7z) to the stackoverflow `Posts.xml` dump.
+[Link](https://archive.org/download/stackexchange/stackoverflow.com-Posts.7z) to the stackoverflow `Posts.xml` dump.
+
+[Link](https://archive.org/download/stackexchange/stackoverflow.com-Users.7z) to the stackoverflow `Users.xml` dump.
 
 [Link](https://meta.stackexchange.com/questions/2677/database-schema-documentation-for-the-public-data-dump-and-sede) to the schema of the available dumps. 
 
-Extract Posts.xml in this folder.
+Extract `Posts.xml` and `Users.xml` in this folder.
 ```
 python extract_questions.py
 python extract_answers.py
+python extract_users.py
 ```
 This will extract the questions and then the answers to the extracted questions for the tags `Python`, `Java` and `R` in _csv_ formats. :beer:
