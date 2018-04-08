@@ -33,7 +33,18 @@ for(theDate in unique(reduced$CreationDate)){
   #considering only one occurence of link between answer - question
   dataNoDup = temp1[!duplicated(temp1),]
   #create graph
-  tempg = graph_from_data_frame(dataNoDup,directed = FALSE)
+  vertex.attrs <- list(name = unique(c(dataNoDup$OwnerUserId.x, dataNoDup$OwnerUserId.y)))
+  edges <- rbind(match(dataNoDup$OwnerUserId.x, vertex.attrs$name),
+                 match(dataNoDup$OwnerUserId.y, vertex.attrs$name))
+  
+  tempg <- graph.empty(n = 0, directed = F)
+  tempg <- add.vertices(tempg, length(vertex.attrs$name), attr = vertex.attrs)
+  tempg <- add.edges(tempg, edges)
+  
+  remove(edges)
+  remove(vertex.attrs)
+  
+  #tempg = graph_from_data_frame(dataNoDup,directed = FALSE)
   
   #Betweeness
   b = betweenness(tempg)
